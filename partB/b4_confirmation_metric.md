@@ -7,7 +7,7 @@ the preemption-driven mechanism from B2 is correct, we'd expect to see
 `kv_cache_util` climb toward its ceiling (~0.95-0.97) right before each
 spike in preemption events, and each preemption event should correlate
 with a visible stall or spike in `itl_ms_p50` (inter-token latency) for
-the affected sequences immediately afterward — since a preempted
+the affected sequences immediately afterward - since a preempted
 sequence has to wait and then resume, its per-token latency during
 that window should jump well above the steady-state ~90-100ms seen in
 the batch=24 row. Seeing this tight time-correlation (memory pressure

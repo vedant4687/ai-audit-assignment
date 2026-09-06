@@ -27,7 +27,7 @@
   languages symmetrically -> negligible effect on eng/hin RATIO. 
   Not a driver of the 5.89x gap.
 
-## Day 1 (continued) — KEY FINDING
+## Day 1 (continued) - KEY FINDING
 - Hypothesis: report's claim that Hindi's high fertility is a "script 
   property, not tokenizer property" is testable by swapping tokenizers
 - Ran fertility.py with hf:xlm-roberta-base instead of gpt2, same corpus
@@ -60,7 +60,7 @@
   required HF login (browser OAuth) to access
 - Corpus saved to partA/corpus/{eng,hin,kan,tam}.txt
 
-## Day 2 (continued) — A3 corrected analysis
+## Day 2 (continued) - A3 corrected analysis
 - Ran corrected_analysis.py: 2 tokenizers (gpt2, xlm-roberta-base) x 
   4 denominators (tok/word, tok/char, tok/byte, tok/sentence) x 4 
   languages, using full FLORES+ corpus (997 sentences each)
@@ -76,7 +76,7 @@
   quantity that matters for serving cost, unlike tok/word or tok/char 
   which depend on language-specific word/character conventions
 
-## Day 2 (continued) — A4 memo written
+## Day 2 (continued) - A4 memo written
 - Synthesized A2 (conceptual bug found) + A3 (corrected numbers) into 
   a 1-page recommendation memo
 - Core message: 6-15x cost estimate was a tokenizer artifact, not a 
@@ -147,7 +147,7 @@
   affected sequences immediately after a preemption event
 - Saved as partB/b4_confirmation_metric.md
 
-## Day 2 (continued) — wrap-up
+## Day 2 (continued) - wrap-up
 - Organized final B1-B4 answers into partB/ as separate files 
   (b1_kv_cache_math.md, b2_throughput_anomaly.md, 
   b3_goodput_correction.md, b4_confirmation_metric.md) — previously 
@@ -166,7 +166,7 @@
   be ready to discuss in defense - doesn't change the ~27 sequence 
   conclusion meaningfully
 
-## Day 2 (continued) — Part C memo
+## Day 2 (continued) - Part C memo
 - Drafted the Part C decision memo: chose prompt-engineering-only 
   over SFT or a small rewriter model, given constraints (1 A100/2 weeks, 
   1 reviewer 10h/week Hindi+Kannada only, 3-week launch, no API budget)
@@ -178,7 +178,7 @@
   and a day-1 experiment
 - Saved as partC/memo.md
 
-## Day 2 (continued) — repo cleanup
+## Day 2 (continued) - repo cleanup
 - Renamed folders for consistency: "part c" -> partC, part-a -> partA, 
   part-b -> partB
 - Created partA/a2_script_audit.md as a dedicated writeup of the A2 

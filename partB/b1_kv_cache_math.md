@@ -6,7 +6,7 @@ Formula: 2 (K and V) × num_layers × KV_heads × head_dim × bytes_per_element
 = 2 × 28 × 8 × 128 × 2 (fp16)
 = 114,688 bytes/token (112 KiB/token)
 
-Note: uses KV_heads (8), not Q attention heads (24) — this model uses
+Note: uses KV_heads (8), not Q attention heads (24) - this model uses
 GQA (grouped-query attention), where multiple query heads share KV heads.
 
 ## Max concurrent 4096-token sequences
@@ -21,8 +21,8 @@ GQA (grouped-query attention), where multiple query heads share KV heads.
 
 ## Verification against bench_log.csv
 At prompt_len=3584 + gen_len=512 (= 4096 context):
-- batch=24: kv_cache_util=0.93, preempted_seqs=0 — fits cleanly
-- batch=32: kv_cache_util=0.97, preempted_seqs=7 — exceeds ceiling
-- batch=48: kv_cache_util=0.97, preempted_seqs=23 — heavy overflow
+- batch=24: kv_cache_util=0.93, preempted_seqs=0 - fits cleanly
+- batch=32: kv_cache_util=0.97, preempted_seqs=7 - exceeds ceiling
+- batch=48: kv_cache_util=0.97, preempted_seqs=23 - heavy overflow
 
 Prediction (~27) matches the observed transition point closely.
