@@ -27,7 +27,7 @@
   languages symmetrically -> negligible effect on eng/hin RATIO. 
   Not a driver of the 5.89x gap.
 
-  ## Day 1 (continued) — KEY FINDING
+## Day 1 (continued) — KEY FINDING
 - Hypothesis: report's claim that Hindi's high fertility is a "script 
   property, not tokenizer property" is testable by swapping tokenizers
 - Ran fertility.py with hf:xlm-roberta-base instead of gpt2, same corpus
@@ -37,7 +37,7 @@
   Hindi's script complexity. This is the core conceptual bug in 
   REPORT_v0's Section 1.
 
-  ## Day 1 (continued)
+## Day 1 (continued)
 - Hypothesis: random.seed(1337) might be masking some non-determinism 
   or sampling that affects the numbers
 - Ran: Select-String -Path fertility.py -Pattern "random\."
@@ -48,7 +48,7 @@
   actually fine" item required by the assignment. Flagging with evidence, 
   not flagging as a bug.
 
-  ## Day 2 - 05/09/26
+## Day 2 - 05/09/26
 - Part A1: built real multilingual eval corpus using FLORES+ 
   (openlanguagedata/flores_plus, dev split)
 - Languages: English (eng_Latn), Hindi (hin_Deva), Kannada (kan_Knda), 
@@ -76,7 +76,7 @@
   quantity that matters for serving cost, unlike tok/word or tok/char 
   which depend on language-specific word/character conventions
 
-  ## Day 2 (continued) — A4 memo written
+## Day 2 (continued) — A4 memo written
 - Synthesized A2 (conceptual bug found) + A3 (corrected numbers) into 
   a 1-page recommendation memo
 - Core message: 6-15x cost estimate was a tokenizer artifact, not a 
@@ -95,8 +95,9 @@
   shows preemptions (7) and near-saturated kv_util (0.97). Matches 
   predicted ceiling closely.
 
-  ## Day 2 (continued) - B2/B3: throughput anomaly + goodput miscalculation
-B2 - Anomaly at prompt_len=3584 sweep:
+## Day 2 (continued) - B2/B3: throughput anomaly + goodput miscalculation
+
+ ### B2 - Anomaly at prompt_len=3584 sweep:
 - Throughput (reported_tok_s) climbs batch 4->24 (565 -> 1607), but 
   DROPS at batch 32 (1384) and batch 48 (1298), even though batch size 
   increases
@@ -116,7 +117,7 @@ B2 - Anomaly at prompt_len=3584 sweep:
   to the observed peak (~1607 tok/s reported-metric, though see B3 for 
   why even that number needs correction)
 
-B3 - reported_tok_s is NOT goodput:
+### B3 - reported_tok_s is NOT goodput:
 - Verified formula: reported_tok_s = (prompt_len + gen_len) * num_requests 
   / wall_clock_s -- e.g. batch=16: (3584+512)*16/49.97 = 1311.5, matches 
   logged 1311.4 exactly
@@ -135,7 +136,7 @@ B3 - reported_tok_s is NOT goodput:
   likely has LOWER goodput than batch 24, not higher, due to heavy 
   preemption (23/48 sequences preempted)
 
-  ## Day 2 (continued) - B4: confirmation metric
+## Day 2 (continued) - B4: confirmation metric
 - Reasoned through which single serving-stack metric would confirm 
   the B2 preemption mechanism, rather than running a new experiment 
   (no live serving stack access to pull real-time metrics)
@@ -165,7 +166,7 @@ B3 - reported_tok_s is NOT goodput:
   be ready to discuss in defense - doesn't change the ~27 sequence 
   conclusion meaningfully
 
-  ## Day 2 (continued) — Part C memo
+## Day 2 (continued) — Part C memo
 - Drafted the Part C decision memo: chose prompt-engineering-only 
   over SFT or a small rewriter model, given constraints (1 A100/2 weeks, 
   1 reviewer 10h/week Hindi+Kannada only, 3-week launch, no API budget)
@@ -190,3 +191,6 @@ B3 - reported_tok_s is NOT goodput:
   2041 bytes — a giveaway). Reviewed and corrected by re-pasting the 
   correct Part C memo content; verified via file size difference and 
   a content spot-check (Get-Content -TotalCount 3)
+
+
+  -----
